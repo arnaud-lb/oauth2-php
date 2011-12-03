@@ -508,9 +508,22 @@ class OAuth2 {
    */
   protected function getBearerTokenFromHeaders(Request $request, $removeFromRequest)
   {
-    if (!$header = $request->headers->get('AUTHORIZATION')) {
-      return NULL;
+    $header = null;
+    if (!$request->headers->has('AUTHORIZATION')) {
+      if (function_exists('apache_request_headers')) {
+        $headers = apache_request_headers();
+        if (isset($headers['Authorization'])) {
+          $header = $headers['Authorization'];
+        }
+      }
+    } else {
+      $header = $request->headers->get('AUTHORIZATION');
     }
+
+    if (!$header) {
+        return NULL;
+    }
+
 
     if (!preg_match('/'.preg_quote(self::TOKEN_BEARER_HEADER_NAME, '/').'\s(\S+)/', $header, $matches)) {
       return NULL;
