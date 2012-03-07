@@ -1087,7 +1087,7 @@ class OAuth2 {
    * @see http://tools.ietf.org/html/draft-ietf-oauth-v2-20#section-5
    * @ingroup oauth2_section_5
    */
-  protected function createAccessToken(IOAuth2Client $client, $data, $scope=NULL) {
+  public function createAccessToken(IOAuth2Client $client, $data, $scope=NULL) {
     $token = array(
       "access_token" => $this->genAccessToken(),
       "expires_in"   => $this->getVariable(self::CONFIG_ACCESS_LIFETIME),
