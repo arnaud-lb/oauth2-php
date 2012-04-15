@@ -1,3 +1,9 @@
+## Repository has been moved
+
+Please use https://github.com/FriendsOfSymfony/oauth2-php instead
+
+# OAuth2-php
+
 [![Build Status](https://secure.travis-ci.org/arnaud-lb/oauth2-php.png)](http://travis-ci.org/arnaud-lb/oauth2-php)
 
 OAuth2 Server now implements draft 21 of OAuth 2.0
